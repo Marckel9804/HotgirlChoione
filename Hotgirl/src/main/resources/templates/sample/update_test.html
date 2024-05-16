@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/sample/update_proc}" th:object="${update}" method="post">
+    <label for="age">아이디:</label>
+    <input type="text" id="age" th:field="*{id}" required placeholder="id 입력">
+    <br>
+    <label for="name">이름:</label>
+    <input type="text" id="name" th:field="*{name}" required placeholder="한국명">
+    <br>
+    <input th>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>

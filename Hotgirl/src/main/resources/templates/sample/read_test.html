@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 아래 부분에 model에 등록한 sampleBean 변수들 출력 -->
+<div th:if="${sampleBean}">
+    <p th:text="'Sample ID: ' + ${sampleBean.id}"></p>
+    <p th:text="'Sample Name: ' + ${sampleBean.name}"></p>
+    <p th:text="'Sample Age: ' + ${sampleBean.age}"></p>
+    <!-- 필요한 변수들을 추가로 출력하십시오 -->
+</div>
+<div th:unless="${sampleBean}">
+    <p>No SampleEntity found.</p>
+</div>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    <tr th:each="sample : ${sampleListBean}">
+        <td th:text="${sample.getId()}"></td>
+        <td th:text="${sample.getName()}"></td>
+        <td th:text="${sample.getAge()}"></td>
+    </tr>
+</table>
+</body>
+</html>

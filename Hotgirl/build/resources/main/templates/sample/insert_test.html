@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+                                                <!-- model 이름을 불러오는 방식 -->
+<form action="#" th:action="@{/sample/insert_proc}" th:object="${sample}" method="post">
+    <label for="name">이름:</label>
+    <input type="text" id="name" th:field="*{name}" required placeholder="한국명">
+    <br>
+    <label for="age">나이:</label>
+    <input type="text" id="age" th:field="*{age}" required placeholder="0~100 입력">
+    <br>
+    <button type="submit">Register</button>
+</form>
+
+</body>
+</html>
