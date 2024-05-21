@@ -3,9 +3,9 @@ spring:
     static-path-pattern: /resources/**
 
   datasource:
-    url: jdbc:mysql://localhost:3306/springdb
+    url: jdbc:mysql://localhost:3306/spring
     username: root
-    password: 1234
+    password: 5040
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
