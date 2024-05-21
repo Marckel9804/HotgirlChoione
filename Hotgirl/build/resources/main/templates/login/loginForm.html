@@ -1,78 +1,62 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HotGirl JaeWon</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(to bottom, #ff99cc, #ffccff);
-            font-family: 'Montserrat', sans-serif;
-            color: #333;
+        .container {
+            max-width: 560px;
         }
-        .login-box {
-            max-width: 400px;
-            margin: 100px auto;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        }
-        .login-box h1 {
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-        .btn-login {
-            background-color: #ff69b4;
-            color: #fff;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .btn-login:hover {
-            background-color: #ff1493;
-        }
-        .social-login {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .social-login a {
-            display: inline-block;
-            margin: 0 5px;
-            color: #333;
-            font-size: 24px;
-            transition: color 0.3s ease;
-        }
-        .social-login a:hover {
-            color: #ff1493;
+
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
         }
     </style>
 </head>
 <body>
-<div class="login-box">
-    <h1>HotGirl JaeWon</h1>
-    <form>
-        <div class="mb-3">
-            <input type="email" class="form-control" placeholder="id/email">
-        </div>
-        <div class="mb-3">
-            <input type="password" class="form-control" placeholder="password">
-        </div>
-        <button type="submit" class="btn btn-primary btn-login btn-block">login</button>
-    </form>
-    <div class="social-login">
-        <a href="#"><i class="fab fa-google"></i></a>
-        <a href="#"><i class="fab fa-naver"></i></a>
-        <a href="#"><i class="fab fa-kakao"></i></a>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>로그인</h2>
     </div>
-    <div class="text-center mt-3">
-        <a href="#" class="text-decoration-none">회원가입</a> / <a href="#" class="text-decoration-none">아이디/비밀번호 찾기</a>
-    </div>
-</div>
+    <form action="" th:action th:object="${loginForm}" method="post">
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+               th:text="${err}">전체 오류 메시지</p>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+        <div>
+            <label for="loginId">로그인 ID</label>
+            <input type="text" id="loginId" th:field="*{loginId}" class="form-control"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{loginId}"/>
+        </div>
+
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" th:field="*{password}"
+                   class="form-control"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{password}"/>
+
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg" type="submit">로그인
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-lg"
+                        onclick="location.href='items.html'"
+                        th:onclick="|location.href='@{/}'|"
+                        type="button">취소
+                </button>
+            </div>
+        </div>
+    </form>
+</div> <!-- /container -->
 </body>
 </html>
