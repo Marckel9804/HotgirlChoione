@@ -1,6 +1,6 @@
 spring:
   mvc:
-    static-path-pattern: /resources/**
+
 
   datasource:
     url: jdbc:mysql://localhost:3306/springdb
@@ -15,3 +15,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+
+  kakao:
+    token-uri: https://kauth.kakao.com/oauth/token
+    user-info-uri: https://kapi.kakao.com/v2/user/me
+    grant-type: authorization_code
+    client-id: 7bbf78e3066640058f0133310a142040
+    redirect-uri: http://localhost:8080/login-callback
