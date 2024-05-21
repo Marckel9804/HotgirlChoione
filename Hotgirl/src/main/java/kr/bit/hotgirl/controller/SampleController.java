@@ -6,10 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -74,4 +71,8 @@ public class SampleController {
     public String login_test() {
         return "login/login_testtest";
     }
+//    @GetMapping("/login/kakao")
+//    public CustomResponseEntity<UserResponse.Login> loginByKakao(@RequestParam(name = "code") String code) {
+//        return CustomResponseEntity.success(userService.loginByOAuth(code, KAKAO));
+//    }
 }
