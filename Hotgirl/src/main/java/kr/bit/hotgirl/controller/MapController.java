@@ -21,6 +21,11 @@ public class MapController {
         return "login/mypage";
     }
 
+
+    @GetMapping("/jsimport")
+    public String jsimport(){
+        return "maps/jsimport";
+    }
     @GetMapping("/login")
     public String login(){
         return "login/login";
