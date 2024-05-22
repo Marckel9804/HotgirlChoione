@@ -1,0 +1,3 @@
+#application
+resources/application.properties
+resources/application.yml
