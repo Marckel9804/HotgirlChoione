@@ -20,4 +20,9 @@ public class MapController {
     public String maptestBounds(){
         return "maps/maptestBounds";
     }
+
+    @GetMapping("/jsimport")
+    public String jsimport(){
+        return "maps/jsimport";
+    }
 }
