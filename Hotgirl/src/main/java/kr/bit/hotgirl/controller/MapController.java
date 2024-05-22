@@ -16,8 +16,14 @@ public class MapController {
         return "maps/maptest11";
     }
 
-    @GetMapping("/maptestBounds")
-    public String maptestBounds(){
-        return "maps/maptestBounds";
+    @GetMapping("/mypage")
+    public String mypage(){
+        return "login/mypage";
     }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login/login";
+    }
+
 }
