@@ -16,13 +16,19 @@ public class MapController {
         return "maps/maptest11";
     }
 
-    @GetMapping("/maptestBounds")
-    public String maptestBounds(){
-        return "maps/maptestBounds";
+    @GetMapping("/mypage")
+    public String mypage(){
+        return "login/mypage";
     }
+
 
     @GetMapping("/jsimport")
     public String jsimport(){
         return "maps/jsimport";
     }
+    @GetMapping("/login")
+    public String login(){
+        return "login/login";
+    }
+
 }
