@@ -2,6 +2,12 @@
 function goBack() {
     window.history.back();
 }
+//엔터키
+function handleEnterKey(event) {
+    if (event.keyCode === 13) {
+        searchByKeyword();
+    }
+}
 
 // 카테고리 클릭 시 실행되는 함수
 function categoryClicked(category) {
@@ -86,6 +92,7 @@ function panTo() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos) {
             var moveLatLon = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            map.setLevel(3); // 확대 레벨 조정
             map.panTo(moveLatLon);
 
             var currentLocationMarker = new kakao.maps.Marker({
@@ -97,6 +104,12 @@ function panTo() {
                 )
             });
 
+            // 마커에 클릭 이벤트를 등록합니다.
+            kakao.maps.event.addListener(currentLocationMarker, 'click', function() {
+                // 마커의 위치 좌표를 기반으로 카카오맵 주소 링크를 열립니다.
+                window.open(`https://map.kakao.com/link/to/${moveLatLon.getLat()},${moveLatLon.getLng()}`, '_blank');
+            });
+
             if (window.currentLocationMarker) {
                 window.currentLocationMarker.setMap(null);
             }
@@ -104,20 +117,7 @@ function panTo() {
             window.currentLocationMarker = currentLocationMarker;
 
         }, function(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("위치 정보 사용에 동의하지 않았습니다.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("위치 정보를 가져올 수 없습니다.");
-                    break;
-                case error.TIMEOUT:
-                    alert("위치 정보를 가져오는 데 시간이 초과되었습니다.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("알 수 없는 오류가 발생했습니다.");
-                    break;
-            }
+            // ... 에러 처리 코드 ...
         });
     } else {
         alert("이 브라우저는 Geolocation을 지원하지 않습니다.");
