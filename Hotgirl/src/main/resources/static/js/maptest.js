@@ -9,6 +9,13 @@ function handleEnterKey(event) {
     }
 }
 
+// 엔터키
+function handleEnterKey(event) {
+    if (event.keyCode === 13) {
+        searchByKeyword();
+    }
+}
+
 // 카테고리 클릭 시 실행되는 함수
 function categoryClicked(category) {
     const subcategories = {
@@ -55,7 +62,7 @@ function closeModal() {
 
 // 서브카테고리 선택 시 실행되는 함수
 function selectCategory(subcategory) {
-    alert(subcategory + ' 선택');
+    searchByKeyword(subcategory); // 서브카테고리로 검색
     closeModal();
 }
 
