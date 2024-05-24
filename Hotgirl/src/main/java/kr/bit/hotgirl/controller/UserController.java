@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult; // BindingResult 추가
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Map;
 
 
 @Controller
@@ -40,5 +41,13 @@ public class UserController {
             redirectAttributes.addFlashAttribute("error", "회원가입에 실패했습니다. 다시 시도해주세요.");
             return "redirect:/register";
         }
+    }
+
+    @PostMapping("/user/check-duplication")
+    @ResponseBody
+    public Map<String, Boolean> checkDuplication(@RequestBody Map<String, String> request) {
+        String userId = request.get("userId");
+        boolean isDuplicate = userService.checkDuplicateUserId(userId);
+        return Map.of("isDuplicate", isDuplicate);
     }
 }
