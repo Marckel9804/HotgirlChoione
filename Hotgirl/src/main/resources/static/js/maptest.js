@@ -2,6 +2,12 @@
 function goBack() {
     window.history.back();
 }
+//엔터키
+function handleEnterKey(event) {
+    if (event.keyCode === 13) {
+        searchByKeyword();
+    }
+}
 
 // 엔터키
 function handleEnterKey(event) {

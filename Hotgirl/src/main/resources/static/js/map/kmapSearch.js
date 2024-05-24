@@ -1,6 +1,8 @@
 var pss = new kakao.maps.services.Places(map);
 var markers = []; // 마커를 저장할 배열
+
 var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 전역으로 하나의 인포윈도우 생성
+// var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 이거는 닫는 x창 열때
 
 function searchByKeyword(keyword) {
     console.log("function searchByKeyword");
@@ -13,6 +15,7 @@ function searchByKeyword(keyword) {
     }
     console.log(keyword);
 
+
     // 기존 마커들과 검색창 텍스트를 초기화
     removeMarkers();
     clearSearchInput();
@@ -23,6 +26,7 @@ function searchByKeyword(keyword) {
 function placesSearchCB(data, status, pagination) {
     console.log("function placesSearchCB");
     if (status === kakao.maps.services.Status.OK) {
+
         for (var i = 0; i < data.length; i++) {
             console.log(data[i]);
 
@@ -35,13 +39,17 @@ function placesSearchCB(data, status, pagination) {
             // 마커에 클릭 이벤트를 등록합니다.
             kakao.maps.event.addListener(marker, 'click', (function(marker, data) {
                 return function() {
-                    var infowindowContent = '<div class="inner_tooltip" style="text-align: center;">' + // 가운데 정렬 스타일 적용
-                                            '<a href="' + data.place_url + '" target="_blank" class="link_btn link_tit_tooltip"><class="tit_tooltip">' + data.place_name + '</a>' +
-                                            '<div class="button-container">' +
-                                            '<button class="link_btn link_route" onclick="findRoute(' + data.y + ', ' + data.x + ')">리뷰</button>' +
-                                            '<button class="link_btn link_another_action" onclick="anotherAction()">게시판</button>' +
-                                            '</div>' +
-                                            '</div>';
+                    var infowindowContent =
+                        '<div class="inner_tooltip" style="text-align: center;">' + // 가운데 정렬 스타일 적용
+                            '<div>' +
+                                '<a href="' + data.place_url + '" target="_blank" class="link_btn link_tit_tooltip">' + data.place_name + '</a>' +
+                                '<span class="closeButton" style="margin-left: 5px; width: 10px; height: 10px"><button onclick="infowindow.close()">&times;</button></span>'+
+                            '</div>' +
+                            '<div class="button-container" style="margin-top: 5px">' +
+                                '<button class="link_btn link_route" onclick="findRoute(' + data.y + ', ' + data.x + ')">리뷰</button> ' +
+                                '<button class="link_btn link_another_action" onclick="anotherAction()">게시판</button>' +
+                            '</div>' +
+                        '</div>';
 
                     // 이미 열려있는 인포윈도우 닫기
                     infowindow.close();
