@@ -1,10 +1,15 @@
 var pss = new kakao.maps.services.Places(map);
 var markers = []; // 마커를 저장할 배열
 
+<<<<<<< HEAD
 
 var infowindow = new kakao.maps.InfoWindow(); // 전역으로 하나의 인포윈도우 생성
 // var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 이거는 닫는 x창 열때
 
+=======
+var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 전역으로 하나의 인포윈도우 생성
+// var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 이거는 닫는 x창 열때
+>>>>>>> main
 
 function searchByKeyword(keyword) {
     console.log("function searchByKeyword");
