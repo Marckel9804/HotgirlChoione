@@ -1,6 +1,6 @@
 var pss = new kakao.maps.services.Places(map);
 var markers = []; // 마커를 저장할 배열
-var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 전역으로 하나의 인포윈도우 생성
+var infowindow = new kakao.maps.InfoWindow({ removable: true });
 
 function searchByKeyword(keyword) {
     console.log("function searchByKeyword");
@@ -40,8 +40,7 @@ function placesSearchCB(data, status, pagination) {
                                             '<div class="button-container">' +
                                             '<button class="link_btn link_route" onclick="findRoute(' + data.y + ', ' + data.x + ')">리뷰</button>' +
                                             '<button class="link_btn link_another_action" onclick="anotherAction()">게시판</button>' +
-                                            '</div>' +
-                                            '</div>';
+                                            '</div>' + '</div>';
 
                     // 이미 열려있는 인포윈도우 닫기
                     infowindow.close();
