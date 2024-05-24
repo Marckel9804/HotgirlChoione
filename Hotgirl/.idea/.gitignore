@@ -11,12 +11,11 @@
 **/application.yml
 application.properties
 application.yml
-<<<<<<< HEAD
+
 Hotgirl/src/main/resources/application.properties
 Hotgirl/src/main/resources/application.yml
 .properties
 .yml
 
-=======
->>>>>>> 9ad943cc96ff5449146d11c7b2aa018b71018162
+
 
