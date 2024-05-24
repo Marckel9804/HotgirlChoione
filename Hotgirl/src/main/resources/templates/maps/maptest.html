@@ -11,7 +11,6 @@
     <title>메인페이지</title>
     <script src="/js/maptest.js"></script>
 
-
 </head>
 <body>
 <h1>Hot Girl JaeWon</h1>
@@ -56,17 +55,7 @@
 <!-- 현재 위치 버튼 -->
 <div id="currentLocationButton" onclick="panTo()">
 <!--    <i class="fas fa-map-marker-alt"></i>-->
-    <img src="/images/map/BlueMarker.png" style="width:22px;height:22px"/>
-</div>
-
-<!-- 슬라이드 패널 -->
-<div id="slidePanel">
-    <span class="closebtn" onclick="closeSlidePanel()">&times;</span>
-    <div id="slidePanelContent">
-        <h2 id="placeName"></h2>
-        <img id="placeImage" src="" alt="Place Image" class="marker-image">
-        <div id="placeInfo" class="info-content"></div>
-    </div>
+    <img src="/images/maptest.png" style="width:22px;height:22px"/>
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12b30b49adc3c4850d1d2e9651fb114b&libraries=services"></script>
@@ -81,6 +70,7 @@
         center: new kakao.maps.LatLng(37.566535, 126.97796919999996),
         level: 3
     };
+
 </script>
 
 </body>
