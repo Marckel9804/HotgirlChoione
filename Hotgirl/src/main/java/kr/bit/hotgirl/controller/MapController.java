@@ -8,21 +8,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MapController {
 
-
-
-
-
-
-
-
-
-    @GetMapping("/api_test")
-    public String apiTest() {
-        return "maps/api_test";
+    @GetMapping("/maptest")
+    public String maptest(){
+        return "maps/maptest";
+    }
+    @GetMapping("/maptest11")
+    public String maptest11(){
+        return "maps/maptest11";
+    }
+    @GetMapping("/maptest22")
+    public String maptest22(){
+        return "maps/maptest22";
     }
 
-    @GetMapping("/imageMarker")
-    public String imageMarker() {
-        return "maps/imageMarker";
+    @GetMapping("/mypage")
+    public String mypage(){
+        return "login/mypage";
     }
+
+    @GetMapping("/jsimport")
+    public String jsimport(){
+        return "maps/jsimport";
+    }
+    @GetMapping("/login")
+    public String login(){
+        return "login/login";
+    }
+
 }

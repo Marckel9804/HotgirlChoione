@@ -29,4 +29,5 @@ public class Place {
     private double latitude;
     @NotEmpty
     private double longitude;
+
 }
