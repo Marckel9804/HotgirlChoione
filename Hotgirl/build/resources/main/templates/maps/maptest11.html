@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/maptest.css">
+    <link rel="stylesheet" href="/css/front.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12b30b49adc3c4850d1d2e9651fb114b"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<h1>Hot Girl JaeWon</h1>
+<div id="searchBox">
+    <input type="text" id="searchInput" placeholder="검색어 입력">
+    <i id="searchIcon" class="fas fa-search"></i>
+</div>
+<div id="categoryIcons" style="margin-bottom: 10px;">
+    <i class="fas fa-utensils categoryIcon" title="맛집" onclick="categoryClicked('맛집')"></i>
+    <i class="fas fa-landmark categoryIcon" title="관광지" onclick="categoryClicked('관광지')"></i>
+    <i class="fas fa-gamepad categoryIcon" title="놀거리" onclick="categoryClicked('놀거리')"></i>
+    <i class="fas fa-coffee categoryIcon" title="카페" onclick="categoryClicked('카페')"></i>
+    <i class="fas fa-star categoryIcon" title="즐겨찾기" onclick="categoryClicked('즐겨찾기')"></i>
+</div>
+<div id="menuWrapper">
+    <span id="backButton" onclick="goBack()">&#8678;</span>
+    <a id="mainLink" href="main.html"></a>
+</div>
+<div class="map-wrap" style="position: absolute; left: 0; top: 0; right: 0; bottom: 60px;">
+    <div id="map" style="width:100%; height:100%"></div>
+    <div class="quick" style="z-index:100;">
+        <a href="javascript:;" onclick="panTo()" class="btn btn-primary"><i class="fas fa-map-marker-alt"></i> 현재 위치</a>
+        <a href="javascript:;" id="filter" class="btn btn-primary"><i class="bi bi-filter"></i>카테고리</a>
+    </div>
+</div>
+<div id="menuIcon" onclick="toggleMenu()">&#9776;</div>
+<div id="menuList">
+    <div id="menuIconWrapper" style="position: absolute; top: 0; right: 0; cursor: pointer;">
+        <div id="menuIcon2" onclick="toggleMenu()">&#9776;</div>
+    </div>
+    <ul>
+        <li onclick="showList('list1')">로그인</li>
+        <li onclick="showList('list2')">마이페이지</li>
+        <li onclick="showList('list3')">즐겨찾기</li>
+    </ul>
+</div>
+
+<!-- 업체 정보 모달 -->
+<div class="modal fade" id="categoryModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">카테고리</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="foodCheck" checked>
+                    <label class="form-check-label" for="foodCheck">맛집</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="hotelCheck" checked>
+                    <label class="form-check-label" for="hotelCheck">숙소</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var map;
+    var ps;
+    var markers = [];
+    var markerPosition = [];
+
+    var mylocationCheck = false;
+    var foodCheck = true;
+    var hotelCheck = true;
+
+    $(function() {
+        $("#filter").click(function() {
+            $('#categoryModal').modal('show');
+        });
+        $('#foodCheck').change(function() {
+            if ($(this).is(":checked")) {
+                foodCheck = true;
+            } else {
+                foodCheck = false;
+            }
+            searchPlaces(hotelCheck, foodCheck);
+        });
+        $('#hotelCheck').change(function() {
+            if ($(this).is(":checked")) {
+                hotelCheck = true;
+            } else {
+                hotelCheck = false;
+            }
+            searchPlaces(hotelCheck, foodCheck);
+        });
+    });
+
+    function panTo() {
+        if (navigator.geolocation) {
+            mylocationCheck = true;
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                var moveLatLon = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                map.panTo(moveLatLon);
+            });
+        }
+    }
+
+function searchPlaces() {
+    removeMarker();
+
+    if (mylocationCheck == true) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                var markerImage = new kakao.maps.MarkerImage({
+                    url: '/images/marker-current.png',
+                    size: new kakao.maps.Size(40, 40),
+                    coords: {
+                        x: 20,
+                        y: 20
+                    }
+                });
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                    zIndex: 5,
+                    image: markerImage
+                });
+                markers.push(marker);
+            });
+        }
+    }
+
+    if (foodCheck == true) {
+        ps.categorySearch('FD6', placesSearchCB, { useMapBounds: true });
+    }
+    if (hotelCheck == true) {
+        ps.categorySearch('AD5', placesSearchCB, { useMapBounds: true });
+    }
+}
+
+function placesSearchCB(data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+        for (var i = 0; i < data.length; i++) {
+            displayMarker(data[i]);
+        }
+    }
+}
+
+function displayMarker(place) {
+    var imageSrc;
+    if (place.category_group_code == "FD6") {
+        imageSrc = '/images/marker-restaurant.png';
+    } else if (place.category_group_code == "AD5") {
+        imageSrc = '/images/marker-hotel.png';
+    }
+    var imageSize = new kakao.maps.Size(36, 49);
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(place.y, place.x),
+        zIndex: 3,
+        image: markerImage
+    });
+    markers.push(marker);
+
+    kakao.maps.event.addListener(marker, 'click', function() {
+        var categoryName = place.category_group_code === "FD6" ? "음식점" : "숙박";
+        var content = `
+            <div>
+                <dl>
+                    <dt>${categoryName}</dt>
+                    <dd><strong>${place.place_name}</strong></dd>
+                </dl>
+                <dl>
+                    <dt>연락처</dt>
+                    <dd>${place.phone || '-'}</dd>
+                </dl>
+                <dl>
+                    <dt>주소</dt>
+                    <dd>${place.address_name}</dd>
+                </dl>
+            </div>
+        `;
+
+        var infowindow = new kakao.maps.InfoWindow({
+            content: content
+        });
+        infowindow.open(map, marker);
+    });
+}
+
+function removeMarker() {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    markers = [];
+}
+
+function toggleMenu() {
+    // 메뉴를 토글하는 코드 작성
+}
+
+function showList(listID) {
+    // 리스트를 보여주는 코드 작성
+}
+
+function goBack() {
+    // 이전 페이지로 이동하는 코드 작성
+}
+
+// 초기화 함수 실행
+$(document).ready(function() {
+    kakaomap(hotelCheck, foodCheck);
+});
+
+function kakaomap(hotelCheck, foodCheck) {
+    var mapContainer = document.getElementById('map'),
+        mapOption = {
+            center: new kakao.maps.LatLng(37.566826, 126.9786567),
+            level: 5
+        };
+    map = new kakao.maps.Map(mapContainer, mapOption);
+    ps = new kakao.maps.services.Places(map);
+    kakao.maps.event.addListener(map, 'idle', searchPlaces);
+    searchPlaces();
+}
+</script>
+
+</body>
+</html>
+
