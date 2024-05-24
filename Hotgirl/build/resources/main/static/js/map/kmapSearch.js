@@ -1,8 +1,15 @@
 var pss = new kakao.maps.services.Places(map);
 var markers = []; // 마커를 저장할 배열
 
+<<<<<<< HEAD
+
+var infowindow = new kakao.maps.InfoWindow(); // 전역으로 하나의 인포윈도우 생성
+// var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 이거는 닫는 x창 열때
+
+=======
 var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 전역으로 하나의 인포윈도우 생성
 // var infowindow = new kakao.maps.InfoWindow({ removable: true }); // 이거는 닫는 x창 열때
+>>>>>>> main
 
 function searchByKeyword(keyword) {
     console.log("function searchByKeyword");
@@ -39,6 +46,7 @@ function placesSearchCB(data, status, pagination) {
             // 마커에 클릭 이벤트를 등록합니다.
             kakao.maps.event.addListener(marker, 'click', (function(marker, data) {
                 return function() {
+
                     var infowindowContent =
                         '<div class="inner_tooltip" style="text-align: center;">' + // 가운데 정렬 스타일 적용
                             '<div>' +
@@ -50,6 +58,7 @@ function placesSearchCB(data, status, pagination) {
                                 '<button class="link_btn link_another_action" onclick="anotherAction()">게시판</button>' +
                             '</div>' +
                         '</div>';
+
 
                     // 이미 열려있는 인포윈도우 닫기
                     infowindow.close();
