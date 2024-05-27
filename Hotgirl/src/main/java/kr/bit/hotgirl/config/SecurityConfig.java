@@ -3,6 +3,7 @@ package kr.bit.hotgirl.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,18 +19,18 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/", "/main", "/User/register",
-                                "maps/maptest", "/maps/maptest11", "/maps/maptest22"
-                                ,  "/User/login", "/User/user/check-duplication",
+                        .requestMatchers("/", "/main", "/User/register"
+                               , "maps/maptest", "/maps/maptest11", "/maps/maptest22"
+                                ,"/User/loginProcess",  "/User/login", "/User/user/check-duplication",
                                 "/User/login?error", "/User/login?logout", "/User/", "/User/mypage",
                                 "/User/userEdit", "/User/userEdit?error", "/User/userEdit?success",
                                 "/User/userDelete", "/User/userDelete?error", "/User/userDelete?success",
-                                "/User/mypage", "resouse/**", "/css/**", "/js/**", "/images/**", "/fonts/**"
+                                "/User/mypage", "resources/**", "/css/**", "/js/**", "/images/**", "/fonts/**"
                         ).permitAll()
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .formLogin((form) -> form
                         .loginPage("/User/login")
+                        .loginProcessingUrl("/User/loginProcess") // login-process
                         .usernameParameter("userId")
                         .passwordParameter("userPw")
                         .defaultSuccessUrl("/", true)

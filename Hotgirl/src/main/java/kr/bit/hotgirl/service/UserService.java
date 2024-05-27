@@ -14,8 +14,8 @@ import java.util.Optional;
 @RequiredArgsConstructor // 필요한 생성자를 자동 생성하기 위한 Lombok 어노테이션
 public class UserService { // UserService 클래스 선언
 
-    private final UserRepository userRepository; // UserRepository 인터페이스를 사용하기 위한 선언
-    private final BCryptPasswordEncoder passwordEncoder; // 비밀번호 인코더 선언
+    private UserRepository userRepository; // UserRepository 인터페이스를 사용하기 위한 선언
+    private BCryptPasswordEncoder passwordEncoder; // 비밀번호 인코더 선언
 
     public UserDTO loginUser(String userId, String userPw) {
         Optional<User> userOptional = userRepository.findById(userId);

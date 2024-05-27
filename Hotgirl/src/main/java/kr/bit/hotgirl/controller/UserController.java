@@ -6,10 +6,12 @@ import jakarta.validation.Valid;
 import kr.bit.hotgirl.dto.UserDTO;
 import kr.bit.hotgirl.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
@@ -17,10 +19,11 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/User")
-@RequiredArgsConstructor
+@Slf4j
 public class UserController {
 
-    private final UserService userService;
+    private UserService userService;
+    private View error;
 
     @GetMapping("/register")
     public String registerForm(Model model) {
@@ -57,20 +60,25 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
+        log.info("before go to loginForm");
         return "User/login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/loginProcess")
     public String login(@RequestParam("userId") String userId,
                         @RequestParam("userPw") String userPw,
                         HttpServletRequest request,
                         Model model) {
+        log.trace("userId: " + userId + "userPw : " + userPw);
+
         try {
             UserDTO userDTO = userService.loginUser(userId, userPw);
             HttpSession session = request.getSession();
             session.setAttribute("userId", userDTO.getUserId()); // 세션에 사용자 ID 저장
-            return "redirect:/";
+            log.info("before login");
+            return "redirect:/main";
         } catch (IllegalArgumentException e) {
+            log.error(e.getMessage());
             model.addAttribute("error", e.getMessage());
             return "User/login";
         }
