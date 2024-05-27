@@ -2,10 +2,12 @@ package kr.bit.hotgirl.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
@@ -16,22 +18,34 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/register", "/").permitAll()
+                        .requestMatchers("/", "/main", "/User/register",
+                                "maps/maptest", "/maps/maptest11", "/maps/maptest22"
+                                , "/", "/User/login", "/user/check-duplication",
+                                "/User/login?error", "/User/login?logout", "/User/", "/User/mypage",
+                                "/User/userEdit", "/User/userEdit?error", "/User/userEdit?success",
+                                "/User/userDelete", "/User/userDelete?error", "/User/userDelete?success",
+                                "/User/mypage", "resouse/**", "/css/**", "/js/**", "/images/**", "/fonts/**", "/"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
+
                 .formLogin((form) -> form
-                        .loginPage("/login")
+                        .loginPage("/User/login")
+                        .usernameParameter("userId")
+                        .passwordParameter("userPw")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/User/login?error")
                         .permitAll()
                 )
                 .logout((logout) -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login")
+                        .logoutSuccessUrl("/User/login?logout")
                         .permitAll()
-//                        .invalidateHttpSession(true)
                 )
-//                .csrf((csrf) -> csrf // CSRF 설정 추가 (선택 사항)
-//                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-//                )
+//                .csrf((csrf) -> csrf.disable()); // CSRF 설정 추가)
+                .csrf((csrf) -> csrf // CSRF 설정 추가
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                )
                 .exceptionHandling((exceptions) -> exceptions
                         .accessDeniedPage("/access-denied")
                 );
@@ -41,5 +55,10 @@ public class SecurityConfig {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SimpleUrlAuthenticationFailureHandler authenticationFailureHandler() {
+        return new SimpleUrlAuthenticationFailureHandler("/login?error"); // 로그인 실패 시 에러 파라미터 추가
     }
 }

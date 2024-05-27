@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/maptest.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>메인페이지</title>
+    <script src="/js/maptest.js"></script>
+
+</head>
+<body>
+<h1>Hot Girl JaeWon</h1>
+<div id="searchBox">
+    <input type="text" id="searchInput" placeholder="검색어 입력" onkeydown="handleEnterKey(event)">
+    <i id="searchIcon" class="fas fa-search" onclick="searchByKeyword()"></i>
+</div>
+<div id="categoryIcons" style="margin-bottom: 10px;">
+    <i class="fas fa-utensils categoryIcon" title="맛집" onclick="categoryClicked('맛집')"></i>
+    <i class="fas fa-landmark categoryIcon" title="관광지" onclick="categoryClicked('관광지')"></i>
+    <i class="fas fa-gamepad categoryIcon" title="놀거리" onclick="categoryClicked('놀거리')"></i>
+    <i class="fas fa-coffee categoryIcon" title="카페" onclick="categoryClicked('카페')"></i>
+    <i class="fas fa-star categoryIcon" title="즐겨찾기" onclick="categoryClicked('즐겨찾기')"></i>
+</div>
+<div id="menuWrapper">
+    <span id="backButton" onclick="goBack()">&#8678;</span>
+    <a id="mainLink" href="main.html"></a>
+</div>
+<div id="map"></div>
+<div id="menuIcon" onclick="toggleMenu()">&#9776;</div>
+<div id="menuList">
+    <div id="menuIconWrapper" style="position: absolute; top: 0; right: 0; cursor: pointer;">
+        <div id="menuIcon2" onclick="toggleMenu()">&#9776;</div>
+    </div>
+    <ul>
+        <li onclick="showList('list1')">로그인</li>
+        <li onclick="showList('list2')">마이페이지</li>
+    </ul>
+</div>
+
+<!-- 카테고리 선택 모달 -->
+<div id="categoryModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="modalText">카테고리를 선택</p>
+        <div id="modalCategories">
+            <!-- 서브카테고리가 동적으로 추가될 영역 -->
+        </div>
+    </div>
+</div>
+
+<!-- 현재 위치 버튼 -->
+<div id="currentLocationButton" onclick="panTo()">
+<!--    <i class="fas fa-map-marker-alt"></i>-->
+    <img src="/images/map/BlueMarker.png" style="width:22px;height:22px"/>
+</div>
+
+<!-- 슬라이드 패널 -->
+<!--<div id="slidePanel">-->
+<!--    <span class="closebtn" onclick="closeSlidePanel()">&times;</span>-->
+<!--    <div id="slidePanelContent">-->
+<!--        <h2 id="placeName"></h2>-->
+<!--        <img id="placeImage" src="" alt="Place Image" class="marker-image">-->
+<!--        <div id="placeInfo" class="info-content"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12b30b49adc3c4850d1d2e9651fb114b&libraries=services"></script>
+<script type="text/javascript" th:src="@{/js/map/kakaomap.js}"></script>
+<script type="text/javascript" th:src="@{/js/map/kmapSearch.js}"></script>
+
+<script>
+    var zoomControl = new kakao.maps.ZoomControl();
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    var mapContainer = document.getElementById('map');
+    var mapOptions = {
+        center: new kakao.maps.LatLng(37.566535, 126.97796919999996),
+        level: 3
+    };
+
+
+</script>
+
+</body>
+</html>

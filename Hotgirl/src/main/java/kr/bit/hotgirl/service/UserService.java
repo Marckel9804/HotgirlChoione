@@ -8,12 +8,31 @@ import org.springframework.dao.DataIntegrityViolationException; // 데이터 무
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; // 비밀번호 암호화를 위한 임포트
 import org.springframework.stereotype.Service; // Service 클래스임을 명시하는 어노테이션
 
+import java.util.Optional;
+
 @Service // Service 클래스임을 명시하는 어노테이션
 @RequiredArgsConstructor // 필요한 생성자를 자동 생성하기 위한 Lombok 어노테이션
 public class UserService { // UserService 클래스 선언
 
     private final UserRepository userRepository; // UserRepository 인터페이스를 사용하기 위한 선언
     private final BCryptPasswordEncoder passwordEncoder; // 비밀번호 인코더 선언
+
+    public UserDTO loginUser(String userId, String userPw) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (passwordEncoder.matches(userPw, user.getUserPw())) {
+                return UserDTO.builder()
+                        .userId(user.getUserId())
+                        .userName(user.getUserName())
+                        .userAddr(user.getUserAddr())
+                        .userAge(user.getUserAge())
+                        .userGender(user.getUserGender())
+                        .build();
+            }
+        }
+        throw new IllegalArgumentException("아이디 또는 비밀번호가 일치하지 않습니다.");
+    }
 
     // 사용자 등록 기능을 하는 메소드
     public UserDTO registerUser(UserDTO userDTO) {
@@ -34,10 +53,14 @@ public class UserService { // UserService 클래스 선언
                 .build();
 
         try {
-            User savedUser = userRepository.save(user); // User 객체 저장
-            // UserDTO 객체 생성. builder()를 통해 필드를 설정하고 build()를 통해 UserDTO 객체를 생성한다.
+            User savedUser = userRepository.save(user); // User 객체 저장 후 반환된 savedUser 사용
             return UserDTO.builder()
+                    .userIdx(savedUser.getUserIdx()) // userIdx 값 설정
                     .userId(savedUser.getUserId())
+                    .userName(savedUser.getUserName())
+                    .userAddr(savedUser.getUserAddr())
+                    .userAge(savedUser.getUserAge())
+                    .userGender(savedUser.getUserGender())
                     .build();
         } catch (DataIntegrityViolationException e) { // 데이터 무결성 예외 처리 (예: 중복된 아이디)
             throw new IllegalArgumentException("회원가입에 실패했습니다. 다시 시도해주세요.");
@@ -48,5 +71,37 @@ public class UserService { // UserService 클래스 선언
         return userRepository.existsById(userId);
     }
 
+    public UserDTO getUserById(String userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자를 찾을 수 없습니다."));
+        return UserDTO.builder()
+                .userId(user.getUserId())
+                .userName(user.getUserName())
+                .userAddr(user.getUserAddr())
+                .userAge(user.getUserAge())
+                .userGender(user.getUserGender())
+                .build();
+    }
+
+    public void updateUser(UserDTO userDTO) {
+        User user = userRepository.findById(userDTO.getUserId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자를 찾을 수 없습니다."));
+
+        if (userDTO.getUserPw() != null && !userDTO.getUserPw().isEmpty()) {
+            String encodedPassword = passwordEncoder.encode(userDTO.getUserPw());
+            user.setUserPw(encodedPassword);
+        }
+
+        user.setUserName(userDTO.getUserName());
+        user.setUserAge(userDTO.getUserAge());
+        user.setUserGender(userDTO.getUserGender());
+        user.setUserAddr(userDTO.getUserAddr());
+
+        userRepository.save(user);
+    }
+
+    public void withdrawalUser(String userId) {
+        userRepository.deleteById(userId);
+    }
 }
 

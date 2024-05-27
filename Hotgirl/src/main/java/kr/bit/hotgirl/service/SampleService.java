@@ -29,5 +29,7 @@ public class SampleService {
         sampleRepository.deleteById(id);
     }
 
-    public void updateSampleName(Long userId, String name) {sampleRepository.updateSampleNameById(userId, name); }
+    public void updateSampleName(Long userId, String name) {
+        sampleRepository.updateSampleNameById(userId, name);
+    }
 }

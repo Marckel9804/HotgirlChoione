@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>마이 페이지</title>
+  <style>
+    body { font-family: sans-serif; }
+    label { display: block; margin-bottom: 5px; }
+    input[type="text"], input[type="number"] { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+    button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    .modal { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); }
+    .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 300px; }
+  </style>
+</head>
+<body>
+<h2>마이 페이지</h2>
+
+<div sec:authorize="isAuthenticated()">
+  <p>로그인 사용자: <span sec:authentication="name"></span></p>
+  <form th:action="@{/logout}" method="post">
+    <button type="submit">로그아웃</button>
+  </form>
+</div>
+
+<div th:if="${userDTO != null}">
+  <div>
+    <label for="userName">이름:</label>
+    <input type="text" id="userName" th:value="${userDTO.userName}" readonly>
+  </div>
+  <div>
+    <label for="userId">아이디:</label>
+    <input type="text" id="userId" th:value="${userDTO.userId}" readonly>
+  </div>
+  <div>
+    <label for="userAge">나이:</label>
+    <input type="number" id="userAge" th:value="${userDTO.userAge}" readonly>
+  </div>
+  <div>
+    <label for="userGender">성별:</label>
+    <input type="text" id="userGender" th:value="${userDTO.userGender}" readonly>
+  </div>
+  <div>
+    <label for="userAddr">주소:</label>
+    <input type="text" id="userAddr" th:value="${userDTO.userAddr}" readonly>
+  </div>
+  <a th:href="@{/user/edit}">회원정보 수정</a>
+  <button id="withdrawalBtn">회원탈퇴</button> </div>
+<div th:unless="${userDTO != null}">
+  <p>회원 정보가 없습니다.</p>
+</div>
+
+<div id="withdrawalModal" class="modal">
+  <div class="modal-content">
+    <p>정말 탈퇴하시겠습니까?</p>
+    <button id="confirmWithdrawalBtn">예</button>
+    <button id="cancelWithdrawalBtn">아니오</button>
+  </div>
+</div>
+
+<script th:inline="javascript">
+  const withdrawalBtn = document.getElementById('withdrawalBtn');
+  const withdrawalModal = document.getElementById('withdrawalModal');
+  const confirmWithdrawalBtn = document.getElementById('confirmWithdrawalBtn');
+  const cancelWithdrawalBtn = document.getElementById('cancelWithdrawalBtn');
+
+  withdrawalBtn.addEventListener('click', () => {
+    withdrawalModal.style.display = 'block';
+  });
+
+  confirmWithdrawalBtn.addEventListener('click', () => {
+    fetch('/user/withdrawal', { method: 'POST' })
+            .then(response => {
+              if (response.ok) {
+                window.location.href = '/'; // 탈퇴 성공 시 루트 페이지로 이동
+              } else {
+                alert('회원 탈퇴에 실패했습니다.');
+              }
+            });
+  });
+
+  cancelWithdrawalBtn.addEventListener('click', () => {
+    withdrawalModal.style.display = 'none';
+  });
+</script>
+</body>
+</html>

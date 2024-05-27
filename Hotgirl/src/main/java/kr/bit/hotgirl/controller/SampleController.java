@@ -21,6 +21,11 @@ public class SampleController {
     @Autowired
     private SampleService sampleService;
 
+    @RequestMapping(value = "/")
+    public String mapMain() {
+        return "maps/maptest";
+    }
+
     @RequestMapping(value = "/smain")
     public String smain() {
         return "sample/smain";
@@ -63,5 +68,15 @@ public class SampleController {
         sampleService.updateSampleName(sample.getId(), sample.getName());
         log.info("무야호 업데이트 성공!!");
         return "sample/smain";
+    }
+
+    @GetMapping("/naverlogin")
+    public String naverlogin() {
+        return "login/login_success";
+    }
+
+    @GetMapping("/login_test")
+    public String login_test() {
+        return "login/login_testtest";
     }
 }

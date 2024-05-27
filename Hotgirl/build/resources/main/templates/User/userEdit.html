@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 정보 수정</title>
+    <style>
+        body { font-family: sans-serif; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="password"], input[type="number"] { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+<h2>회원 정보 수정</h2>
+
+<form th:action="@{/user/edit}" method="post" th:object="${userDTO}">
+    <input type="hidden" th:field="*{userId}">
+    <div>
+        <label for="userPw">새 비밀번호:</label>
+        <input type="password" id="userPw" th:field="*{userPw}">
+        <p th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}" style="color: red;"></p>
+    </div>
+    <div>
+        <label for="userPwConfirm">새 비밀번호 확인:</label>
+        <input type="password" id="userPwConfirm">
+        <p id="pwCheckResult" style="color: red;"></p>
+    </div>
+    <div>
+        <label for="userName">이름:</label>
+        <input type="text" id="userName" th:field="*{userName}">
+        <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color: red;"></p>
+    </div>
+    <div>
+        <label for="userAge">나이:</label>
+        <input type="number" id="userAge" th:field="*{userAge}">
+        <p th:if="${#fields.hasErrors('userAge')}" th:errors="*{userAge}" style="color: red;"></p>
+    </div>
+    <div>
+        <label for="userGender">성별:</label>
+        <select id="userGender" th:field="*{userGender}">
+            <option value="남">남</option>
+            <option value="여">여</option>
+        </select>
+    </div>
+    <div>
+        <label for="userAddr">주소:</label>
+        <input type="text" id="userAddr" th:field="*{userAddr}">
+    </div>
+    <button type="submit">수정하기</button>
+</form>
+
+<script>
+    const idCheckBtn = document.getElementById('idCheckBtn');
+    const idCheckResult = document.getElementById('idCheckResult');
+    const pwInput = document.getElementById('userPw');
+    const pwConfirmInput = document.getElementById('userPwConfirm');
+    const pwCheckResult = document.getElementById('pwCheckResult');
+
+    idCheckBtn.addEventListener('click', () => {
+        const userId = document.getElementById('userId').value;
+
+
+        if (!userId) {
+            idCheckResult.textContent = '아이디를 입력해주세요.';
+            return;
+        }
+
+        fetch('/user/check-duplication', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.isDuplicate) {
+                    idCheckResult.textContent = '이미 사용 중인 아이디입니다.';
+                } else {
+                    idCheckResult.textContent = '사용 가능한 아이디입니다.';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                idCheckResult.textContent = '중복 확인 중 오류가 발생했습니다.';
+            });
+    });
+
+    pwConfirmInput.addEventListener('input', () => {
+        if (pwInput.value !== pwConfirmInput.value) {
+            pwCheckResult.textContent = '비밀번호가 일치하지 않습니다.';
+        } else {
+            pwCheckResult.textContent = '';
+        }
+    });
+</script>
+</body>
+</html>

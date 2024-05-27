@@ -8,6 +8,8 @@ import lombok.*; // Lombok 라이브러리 임포트
 @AllArgsConstructor // Lombok의 모든 필드를 포함한 생성자를 자동 생성하는 어노테이션
 @NoArgsConstructor // Lombok의 기본 생성자를 자동 생성하는 어노테이션
 public class UserDTO { // UserDTO 클래스 선언
+
+    private Long userIdx;
     @NotBlank(message = "아이디는 필수 입력 값입니다.") // 아이디 필드는 비어있을 수 없음을 명시하는 검증 어노테이션
     @Size(min = 4, max = 20, message = "아이디는 4~20자 사이여야 합니다.") // 아이디 필드의 길이는 4~20자 사이여야 함을 명시하는 검증 어노테이션
     private String userId; // 아이디 필드
