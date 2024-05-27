@@ -11,8 +11,7 @@ import lombok.*; // Lombok 라이브러리. Getter, Setter, Builder 등을 자�
 @NoArgsConstructor @AllArgsConstructor // Lombok의 기본 생성자와 모든 필드를 포함한 생성자를 자동 생성하는 어노테이션
 public class User {
 
-
-    @Column(name = "user_idx") // 컬럼 이름을 명시하는 어노테이션
+    @Column(name = "user_idx",  unique = true ) // 컬럼 이름을 명시하는 어노테이션
     private Long userIdx;
 
     @Id

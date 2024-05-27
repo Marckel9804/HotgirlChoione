@@ -3,14 +3,12 @@
 #    static-path-pattern: /resources/**
 
 spring:
-  thymeleaf:
-    prefix: classpath:/templates/
+
 
   datasource:
-    url: jdbc:mysql://localhost:3306/spring
-    username: root
-    password: 5040
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://175.209.41.173:413/hotgirldb
+    username: hotgirl
+    password: 1234
 
   jpa:
     hibernate:
@@ -18,4 +16,4 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.MySQLDialect

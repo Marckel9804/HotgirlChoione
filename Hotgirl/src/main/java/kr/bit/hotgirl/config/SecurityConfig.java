@@ -20,15 +20,14 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/", "/main", "/User/register",
                                 "maps/maptest", "/maps/maptest11", "/maps/maptest22"
-                                , "/", "/User/login", "/user/check-duplication",
+                                ,  "/User/login", "/User/user/check-duplication",
                                 "/User/login?error", "/User/login?logout", "/User/", "/User/mypage",
                                 "/User/userEdit", "/User/userEdit?error", "/User/userEdit?success",
                                 "/User/userDelete", "/User/userDelete?error", "/User/userDelete?success",
-                                "/User/mypage", "resouse/**", "/css/**", "/js/**", "/images/**", "/fonts/**", "/"
+                                "/User/mypage", "resouse/**", "/css/**", "/js/**", "/images/**", "/fonts/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
-
                 .formLogin((form) -> form
                         .loginPage("/User/login")
                         .usernameParameter("userId")
@@ -42,7 +41,7 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/User/login?logout")
                         .permitAll()
                 )
-//                .csrf((csrf) -> csrf.disable()); // CSRF 설정 추가)
+//               .csrf((csrf) -> csrf.disable()); // CSRF 설정 추가)
                 .csrf((csrf) -> csrf // CSRF 설정 추가
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 )

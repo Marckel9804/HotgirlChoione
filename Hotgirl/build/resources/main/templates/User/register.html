@@ -34,7 +34,6 @@
 <body>
 <h2>회원가입</h2>
 
-
 <form th:action="@{/User/register}" method="post" th:object="${userDTO}">
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <div>
@@ -75,50 +74,61 @@
         <label for="userAddr">주소:</label>
         <input type="text" id="userAddr" th:field="*{userAddr}">
     </div>
-    <button type="submit">가입하기</button>
+    <button type="submit" id="registerBtn">가입하기</button>
 </form>
 
-<!--// `DOMContentLoaded` 이벤트는 HTML 문서의 DOM 트리가 완전히 구축되고 파싱이 완료되었을 때 발생합니다. 이 이벤트 리스너 안에 JavaScript 코드를 넣으면, HTML 요소들이 모두 로드된 후에 스크립트가 실행되므로 `document.querySelector`가 null을 반환하는 문제를 방지할 수 있습니다.-->
-<!---->
 <script th:inline="javascript">
-
-
     document.addEventListener('DOMContentLoaded', function () {
         const idCheckBtn = document.getElementById('idCheckBtn');
         const idCheckResult = document.getElementById('idCheckResult');
         const pwInput = document.getElementById('userPw');
         const pwConfirmInput = document.getElementById('userPwConfirm');
         const pwCheckResult = document.getElementById('pwCheckResult');
+        const registerBtn = document.getElementById('registerBtn'); // 가입하기 버튼
+
+        let isIdValid = false; // 아이디 중복 확인 결과 저장
 
         idCheckBtn.addEventListener('click', () => {
             const userId = document.getElementById('userId').value;
-            const csrfToken = document.querySelector('meta[name="_csrf"]').content; // CSRF 토큰 가져오기
-            const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content; // CSRF 헤더 이름 가져오기
+            const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+            const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
 
             if (!userId) {
                 idCheckResult.textContent = '아이디를 입력해주세요.';
+                isIdValid = false; // 아이디 유효성 초기화
+                updateRegisterBtnState(); // 버튼 상태 업데이트
                 return;
             }
 
-            fetch('/user/check-duplication', {
+            fetch('/User/user/check-duplication', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    [csrfHeader]: csrfToken, // CSRF 헤더 추가
+                    [csrfHeader]: csrfToken,
                 },
-                body: JSON.stringify({userId}),
+                body: JSON.stringify({ userId }),
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data.isDuplicate) {
                         idCheckResult.textContent = '이미 사용 중인 아이디입니다.';
+                        isIdValid = false; // 아이디 유효하지 않음
                     } else {
                         idCheckResult.textContent = '사용 가능한 아이디입니다.';
+                        isIdValid = true; // 아이디 유효함
                     }
+                    updateRegisterBtnState(); // 버튼 상태 업데이트
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     idCheckResult.textContent = '중복 확인 중 오류가 발생했습니다.';
+                    isIdValid = false; // 아이디 유효하지 않음
+                    updateRegisterBtnState(); // 버튼 상태 업데이트
                 });
         });
 
@@ -128,9 +138,14 @@
             } else {
                 pwCheckResult.textContent = '';
             }
+            updateRegisterBtnState(); // 버튼 상태 업데이트
         });
+
+        function updateRegisterBtnState() {
+            // 아이디 중복 확인 && 비밀번호 일치 확인
+            registerBtn.disabled = !isIdValid || (pwInput.value !== pwConfirmInput.value);
+        }
     });
 </script>
 </body>
 </html>
-
