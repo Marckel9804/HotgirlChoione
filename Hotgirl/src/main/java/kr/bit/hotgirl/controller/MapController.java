@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/maps")
 @Controller
 public class MapController {
+
     @GetMapping("/maptest")
     public String maptest(){
         return "maps/maptest";
@@ -14,10 +15,6 @@ public class MapController {
     @GetMapping("/maptest11")
     public String maptest11(){
         return "maps/maptest11";
-    }
-    @GetMapping("/maptest22")
-    public String maptest22(){
-        return "maps/maptest22";
     }
 
     @GetMapping("/mypage")

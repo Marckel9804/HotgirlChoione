@@ -4,12 +4,15 @@
     <link rel="stylesheet" href="/css/maptest.css">
     <link rel="stylesheet" href="/css/modal.css">
     <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="/css/slide.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <meta charset="utf-8">
     <title>메인페이지</title>
     <script src="/js/maptest.js"></script>
-
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/js/mapslide.js"></script>
 </head>
 <body>
 <h1>Hot Girl JaeWon</h1>
@@ -51,21 +54,28 @@
     </div>
 </div>
 
+<!-- 글쓰기 모달 -->
+<div id="writeModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeWriteModal()">&times;</span>
+        <input type="text" id="postTitle" placeholder="제목을 입력하세요">
+        <textarea id="writeTextarea" placeholder="내용을 입력하세요"></textarea>
+        <button id="submitButton" class="button put" onclick="submitPost()">등록</button>
+    </div>
+</div>
+
 <!-- 현재 위치 버튼 -->
 <div id="currentLocationButton" onclick="panTo()">
 <!--    <i class="fas fa-map-marker-alt"></i>-->
-    <img src="/images/map/BlueMarker.png" style="width:22px;height:22px"/>
+    <img src="/images/maptest.png" style="width:22px;height:22px"/>
 </div>
 
-<!-- 슬라이드 패널 -->
-<!--<div id="slidePanel">-->
-<!--    <span class="closebtn" onclick="closeSlidePanel()">&times;</span>-->
-<!--    <div id="slidePanelContent">-->
-<!--        <h2 id="placeName"></h2>-->
-<!--        <img id="placeImage" src="" alt="Place Image" class="marker-image">-->
-<!--        <div id="placeInfo" class="info-content"></div>-->
-<!--    </div>-->
-<!--</div>-->
+<!-- 게시판 슬라이드 패널 -->
+<div id="slidePanel" class="slide-panel">
+    <span class="closebtn" onclick="closeSlidePanel()">&times;</span>
+    <div id="slidePanelContent">
+    </div>
+</div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12b30b49adc3c4850d1d2e9651fb114b&libraries=services"></script>
 <script type="text/javascript" th:src="@{/js/map/kakaomap.js}"></script>
