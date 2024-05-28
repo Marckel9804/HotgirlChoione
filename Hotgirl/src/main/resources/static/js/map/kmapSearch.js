@@ -1,11 +1,9 @@
 var pss = new kakao.maps.services.Places(map);
 var markers = []; // 마커를 저장할 배열
 
-// 전역 인포윈도우 생성
-var infowindow = new kakao.maps.InfoWindow({
-    zIndex: 1,
-    removable: true
-});
+// 마커 클릭시 해당 위치 상세정보 창
+var infoOverlay = new kakao.maps.CustomOverlay({removable: true, yAnchor: 1.5 });
+
 
 function searchByKeyword(keyword) {
     console.log("function searchByKeyword");
@@ -46,20 +44,35 @@ function placesSearchCB(data, status, pagination) {
             // 마커에 클릭 이벤트를 등록합니다.
             (function(marker, data) {
                 kakao.maps.event.addListener(marker, 'click', function() {
-                    var infowindowContent =
-                        '<div class="inner_tooltip" style="text-align: center;">' +
-                        '<div>' +
-                         '<a href="' + data.place_url + '" target="_blank" class="link_btn link_tit_tooltip">' + data.place_name + '</a>' +
-                        '</div>' +
-                        '<div class="button-container" style="margin-top: 5px">' +
-                        '<button class="link_btn link_route" onclick="findRoute(' + data.y + ', ' + data.x + ')">리뷰</button> ' +
-                        '<button class="link_btn link_another_action" onclick="showBoardPanel(\'' + data.place_name + '\')">채팅</button>' + // 가게 이름 전달
-                        '</div>' +
-                        '</div>';
 
-                    infowindow.setContent('<div style="padding:10px; background-color:transparent; border:none; box-shadow:none;">' + infowindowContent + '</div>');
-                    infowindow.setPosition(marker.getPosition());
-                    infowindow.open(map, marker);
+                    // 상세정보 창에 담길 html 내용
+                    var infoOverlayContent =
+                        '<div class="info_container"> '+
+                            '<div style="width: auto">' +
+                                '<a class="info_url" href="' + data.place_url + '" target="_blank" class="link_btn link_tit_tooltip">' + data.place_name + '</a>' +
+                            '</div>' +
+                            '<div class="info_button_container">' +
+                                '<button class="link_btn link_route" ' +
+                                    'onclick="findRoute(' + data.y + ', ' + data.x + ')">' +
+                                    '리뷰' +
+                                '</button> ' +
+                                '<button class="link_btn link_another_action" ' +
+                                    'onclick="showBoardPanel(\'' + data.place_name + '\')">' +
+                                    '채팅' +
+                                '</button>' +
+                            '</div>' +
+                        '</div>';
+                    // 상세정보 창 위치
+                    var infoPosition = marker.getPosition();
+
+                    // 이전에 올린 상세정보 창 삭제
+                    infoOverlay.setMap(null);
+                    // 상세정보 내용, 위치 세팅
+                    infoOverlay.setContent(infoOverlayContent);
+                    infoOverlay.setPosition(infoPosition);
+                    // 지도에 세팅한 상세정보 창 띄우기
+                    infoOverlay.setMap(map);
+
                 });
             })(marker, data[i]);
 
