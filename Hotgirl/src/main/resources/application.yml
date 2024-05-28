@@ -14,3 +14,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
+
+  devtools:
+    restart:
+      enabled: false
