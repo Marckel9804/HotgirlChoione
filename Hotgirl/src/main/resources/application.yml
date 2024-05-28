@@ -3,8 +3,8 @@ spring:
 #    static-path-pattern: /resources/**
 
   datasource:
-    url: jdbc:mysql://localhost:3306/springdb
-    username: root
+    url: jdbc:mysql://175.209.41.173:413/hotgirldb
+    username: hotgirl
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
