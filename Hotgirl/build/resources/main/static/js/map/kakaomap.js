@@ -1,7 +1,7 @@
 var mapContainer = document.getElementById('map'),
     mapOption = {
         center: new kakao.maps.LatLng(37.494676, 127.027633),
-        level: 4
+        level: 3
     };
 
     var customOverlay = new kakao.maps.CustomOverlay({

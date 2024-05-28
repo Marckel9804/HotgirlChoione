@@ -11,7 +11,8 @@
     <meta charset="utf-8">
     <title>메인페이지</title>
     <script src="/js/maptest.js"></script>
-
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/js/mapslide.js"></script>
 </head>
 <body>
 <h1>Hot Girl JaeWon</h1>
@@ -53,6 +54,16 @@
     </div>
 </div>
 
+<!-- 글쓰기 모달 -->
+<div id="writeModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeWriteModal()">&times;</span>
+        <input type="text" id="postTitle" placeholder="제목을 입력하세요">
+        <textarea id="writeTextarea" placeholder="내용을 입력하세요"></textarea>
+        <button id="submitButton" class="button put" onclick="submitPost()">등록</button>
+    </div>
+</div>
+
 <!-- 현재 위치 버튼 -->
 <div id="currentLocationButton" onclick="panTo()">
 <!--    <i class="fas fa-map-marker-alt"></i>-->
@@ -82,20 +93,5 @@
 
 </script>
 
-<script>
-
-    function clearSearchInput() {
-        document.getElementById("searchInput").value = "";
-    }
-
-    function showBoardPanel() {
-        document.getElementById('slidePanel').style.width = '250px';
-        document.getElementById('slidePanelContent').innerHTML = '<h2>게시판 정보</h2><p>여기에 게시판 내용을 입력합니다.</p>';
-    }
-
-    function closeSlidePanel() {
-        document.getElementById('slidePanel').style.width = '0';
-    }
-</script>
 </body>
 </html>
