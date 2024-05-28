@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/maps")
 @Controller
 public class MapController {
+
     @GetMapping("/maptest")
     public String maptest(){
         return "maps/maptest";
