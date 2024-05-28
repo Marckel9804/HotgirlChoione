@@ -22,7 +22,6 @@ public class Place {
     @NotEmpty
     private String name;
 
-
     private String zipcode;
 
     @NotEmpty
