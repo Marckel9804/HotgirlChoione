@@ -50,6 +50,9 @@ function placesSearchCB(data, status, pagination) {
                         '<div class="info_container"> '+
                             '<div style="width: auto">' +
                                 '<a class="info_url" href="' + data.place_url + '" target="_blank" class="link_btn link_tit_tooltip">' + data.place_name + '</a>' +
+                                '<button class="info_close" onclick="infoOverlay.setMap(null)">' +
+                                    '&times;' +
+                                '</button>'+
                             '</div>' +
                             '<div class="info_button_container">' +
                                 '<button class="link_btn link_route" ' +
