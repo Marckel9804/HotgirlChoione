@@ -16,10 +16,6 @@ public class MapController {
     public String maptest11(){
         return "maps/maptest11";
     }
-    @GetMapping("/maptest22")
-    public String maptest22(){
-        return "maps/maptest22";
-    }
 
     @GetMapping("/mypage")
     public String mypage(){
