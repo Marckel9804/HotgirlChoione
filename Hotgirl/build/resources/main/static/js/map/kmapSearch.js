@@ -48,7 +48,7 @@ function placesSearchCB(data, status, pagination) {
                     // 상세정보 창에 담길 html 내용
                     var infoOverlayContent =
                         '<div class="info_container"> '+
-                            '<div style="width: auto">' +
+                            '<div class="info_top" style="width: auto">' +
                                 '<a class="info_url" href="' + data.place_url + '" target="_blank" class="link_btn link_tit_tooltip">' + data.place_name + '</a>' +
                                 '<button class="info_close" onclick="infoOverlay.setMap(null)">' +
                                     '&times;' +
