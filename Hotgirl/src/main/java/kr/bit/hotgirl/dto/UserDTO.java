@@ -20,6 +20,10 @@ public class UserDTO { // UserDTO 클래스 선언
     @Size(min = 8, max = 20, message = "비밀번호는 8~20자 사이여야 합니다.") // 비밀번호 필드의 길이는 8~20자 사이여야 함을 명시하는 검증 어노테이션
     private String userPw; // 비밀번호 필드
 
+    // UserDTO.java
+    @NotBlank(message = "비밀번호 확인은 필수 입력 값입니다.")
+    private String userPwConfirm;
+
     @NotBlank(message = "이름은 필수 입력 값입니다.") // 이름 필드는 비어있을 수 없음을 명시하는 검증 어노테이션
     private String userName; // 이름 필드
 

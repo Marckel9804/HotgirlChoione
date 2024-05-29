@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
     @RequestMapping("/")
     public String home() {
-        return "/main";
+        return "/maps/maptest";
     }
 
 }

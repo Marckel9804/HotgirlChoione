@@ -1,55 +1,73 @@
 package kr.bit.hotgirl.config;
 
+import kr.bit.hotgirl.component.CustomAuthenticationFailureHandler;
+import kr.bit.hotgirl.repository.UserRepository;
+import kr.bit.hotgirl.service.CustomUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/", "/main", "/User/register"
-                               , "maps/maptest", "/maps/maptest11", "/maps/maptest22"
-                                ,"/User/loginProcess",  "/User/login", "/User/user/check-duplication",
-                                "/User/login?error", "/User/login?logout", "/User/", "/User/mypage",
-                                "/User/userEdit", "/User/userEdit?error", "/User/userEdit?success",
-                                "/User/userDelete", "/User/userDelete?error", "/User/userDelete?success",
-                                "/User/mypage", "resources/**", "/css/**", "/js/**", "/images/**", "/fonts/**"
-                        ).permitAll()
-                        .anyRequest().authenticated())
-                .formLogin((form) -> form
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/", "/main", "/User/register", "/User/login", "/logout","/maps/maptest",
+                                "/User/check-duplication","/User/login?error", "/User/login?logout", "/User/", "/User/mypage",
+                                "/resources/**","/resources/static/**", "/maps/maptest11", "maps/maptest22").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .formLogin(formLogin -> formLogin
                         .loginPage("/User/login")
-                        .loginProcessingUrl("/User/loginProcess") // login-process
+                        .loginProcessingUrl("/login")
                         .usernameParameter("userId")
                         .passwordParameter("userPw")
                         .defaultSuccessUrl("/", true)
                         .failureUrl("/User/login?error")
+                        .failureHandler(customAuthenticationFailureHandler())
                         .permitAll()
                 )
-                .logout((logout) -> logout
+                .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/User/login?logout")
                         .permitAll()
                 )
-//               .csrf((csrf) -> csrf.disable()); // CSRF 설정 추가)
-                .csrf((csrf) -> csrf // CSRF 설정 추가
+                .csrf(csrf -> csrf
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 )
-                .exceptionHandling((exceptions) -> exceptions
+                .exceptionHandling(exceptions -> exceptions
                         .accessDeniedPage("/access-denied")
-                );
+                )
+                .authenticationProvider(authenticationProvider());
+
         return http.build();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService()); // UserDetailsService 설정
+        provider.setPasswordEncoder(passwordEncoder()); // PasswordEncoder 설정
+        return provider;
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new CustomUserDetailsService(userRepository);
     }
 
     @Bean
@@ -58,7 +76,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SimpleUrlAuthenticationFailureHandler authenticationFailureHandler() {
-        return new SimpleUrlAuthenticationFailureHandler("/login?error"); // 로그인 실패 시 에러 파라미터 추가
+    public CustomAuthenticationFailureHandler customAuthenticationFailureHandler() {
+        return new CustomAuthenticationFailureHandler();
     }
 }

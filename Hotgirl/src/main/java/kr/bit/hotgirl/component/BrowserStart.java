@@ -13,7 +13,7 @@ import java.net.URI;
 public class BrowserStart implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        String url = "http://localhost:8080/map/maptest";
+        String url = "http://localhost:8080/";
         if (Desktop.isDesktopSupported()) {
             Desktop.getDesktop().browse(new URI(url));
         } else {

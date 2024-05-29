@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a207620e-8e21-4003-9c27-42b6bf4dac97" name="Changes" comment="second commit">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/CustomAuthenticationFailureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/service/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/access-denied.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
@@ -13,25 +16,30 @@
       <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/component/BrowserStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/component/BrowserStart.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO$UserDTOBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig.class.uniqueId0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/BrowserStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/BrowserStart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/error.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +118,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
@@ -162,6 +170,7 @@
       <workItem from="1716796286504" duration="156000" />
       <workItem from="1716798154569" duration="199000" />
       <workItem from="1716798617807" duration="8570000" />
+      <workItem from="1716942484139" duration="2115000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <option name="closed" value="true" />

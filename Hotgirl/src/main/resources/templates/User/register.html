@@ -100,13 +100,13 @@
                 return;
             }
 
-            fetch('/User/user/check-duplication', {
+            fetch('/User/check-duplication', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     [csrfHeader]: csrfToken,
                 },
-                body: JSON.stringify({ userId }),
+                body: JSON.stringify({userId}),
             })
                 .then(response => {
                     if (!response.ok) {

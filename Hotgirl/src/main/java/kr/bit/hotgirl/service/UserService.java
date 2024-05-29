@@ -4,34 +4,44 @@ import kr.bit.hotgirl.dto.UserDTO; // UserDTO 클래스를 사용하기 위한 �
 import kr.bit.hotgirl.entity.User; // User Entity를 사용하기 위한 임포트
 import kr.bit.hotgirl.repository.UserRepository; // UserRepository 인터페이스를 사용하기 위한 임포트
 import lombok.RequiredArgsConstructor; // 필요한 생성자를 자동 생성하기 위한 Lombok 어노테이션
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException; // 데이터 무결성 예외 처리를 위한 임포트
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; // 비밀번호 암호화를 위한 임포트
 import org.springframework.stereotype.Service; // Service 클래스임을 명시하는 어노테이션
 
 import java.util.Optional;
 
+@Slf4j
 @Service // Service 클래스임을 명시하는 어노테이션
 @RequiredArgsConstructor // 필요한 생성자를 자동 생성하기 위한 Lombok 어노테이션
 public class UserService { // UserService 클래스 선언
 
-    private UserRepository userRepository; // UserRepository 인터페이스를 사용하기 위한 선언
-    private BCryptPasswordEncoder passwordEncoder; // 비밀번호 인코더 선언
+    private final UserRepository userRepository; // UserRepository 인터페이스를 사용하기 위한 선언
+    private final BCryptPasswordEncoder passwordEncoder; // 비밀번호 인코더 선언
 
     public UserDTO loginUser(String userId, String userPw) {
         Optional<User> userOptional = userRepository.findById(userId);
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            if (passwordEncoder.matches(userPw, user.getUserPw())) {
-                return UserDTO.builder()
-                        .userId(user.getUserId())
-                        .userName(user.getUserName())
-                        .userAddr(user.getUserAddr())
-                        .userAge(user.getUserAge())
-                        .userGender(user.getUserGender())
-                        .build();
-            }
+        if (userOptional.isEmpty()) {
+            log.error("존재하지 않는 아이디입니다. userId: {}", userId);
+            throw new UsernameNotFoundException("존재하지 않는 아이디입니다.");
         }
-        throw new IllegalArgumentException("아이디 또는 비밀번호가 일치하지 않습니다.");
+
+        User user = userOptional.get();
+        if (!passwordEncoder.matches(userPw, user.getUserPw())) {
+            log.error("비밀번호가 일치하지 않습니다. userId: {}", userId);
+            throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
+        }
+
+        return UserDTO.builder()
+                .userId(user.getUserId())
+                .userIdx(user.getUserIdx())
+                .userName(user.getUserName())
+                .userAddr(user.getUserAddr())
+                .userAge(user.getUserAge())
+                .userGender(user.getUserGender())
+                .build();
     }
 
     // 사용자 등록 기능을 하는 메소드
