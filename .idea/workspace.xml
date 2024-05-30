@@ -4,42 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a207620e-8e21-4003-9c27-42b6bf4dac97" name="Changes" comment="second commit">
-      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/CustomAuthenticationFailureHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/service/CustomUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/access-denied.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a207620e-8e21-4003-9c27-42b6bf4dac97" name="Changes" comment="#25 회원기능과 맵기능의 연결">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/component/BrowserStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/component/BrowserStart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO$UserDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/BrowserStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/BrowserStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/error.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +137,9 @@
       <workItem from="1716798154569" duration="199000" />
       <workItem from="1716798617807" duration="8570000" />
       <workItem from="1716942484139" duration="2115000" />
+      <workItem from="1716986476328" duration="377000" />
+      <workItem from="1717028982200" duration="36000" />
+      <workItem from="1717029027942" duration="1364000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <option name="closed" value="true" />
@@ -180,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716541876742</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="#25 회원기능과 맵기능의 연결">
+      <option name="closed" value="true" />
+      <created>1716986597191</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716986597191</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +189,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hi" />
     <MESSAGE value="second commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
+    <MESSAGE value="#25 회원기능과 맵기능의 연결" />
+    <option name="LAST_COMMIT_MESSAGE" value="#25 회원기능과 맵기능의 연결" />
   </component>
 </project>
