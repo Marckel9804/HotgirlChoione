@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a207620e-8e21-4003-9c27-42b6bf4dac97" name="Changes" comment="#25 회원기능과 맵기능의 연결">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/HotgirlChoione.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/Hotgirl.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/.settings/org.eclipse.buildship.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/.settings/org.eclipse.jdt.apt.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/config/SecurityConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/GlobalExceptionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/UserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO$UserDTOBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/UserDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/entity/User$UserBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/entity/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/repository/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/mypage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/User/userEdit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/CustomAuthenticationFailureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/service/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/access-denied.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/mypage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/User/userEdit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/component/BrowserStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/component/BrowserStart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/MapController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/MapController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/MeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/SampleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/controller/SampleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/SampleDTO$SampleDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/dto/SampleDTO$SampleDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/entity/Place.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/entity/SampleEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/entity/SampleEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/login/TestDataInit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/login/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/login/controller/MemberController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/login/dto/LoginForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/login/dto/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/login/repository/MemberRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/classes/java/main/kr/bit/hotgirl/login/service/LoginService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/static/js/maptest.js" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/static/js/maptest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/static/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/login/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/login/loginForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/login/login_success.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/login/login_testtest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/login/mypage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/maps/hihi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/maps/maptest.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/resources/main/templates/maps/maptest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/compileTransaction/stash-dir/MapService.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/BrowserStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/component/BrowserStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/MapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/MapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/MeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/controller/SampleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/entity/Place.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/entity/SampleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/entity/SampleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/login/TestDataInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/login/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/login/controller/MemberController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/login/dto/LoginForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/login/dto/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/login/repository/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/java/kr/bit/hotgirl/login/service/LoginService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/static/js/maptest.js" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/static/js/maptest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/static/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/login/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/login/loginForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/login/login_success.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/login/login_testtest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/login/mypage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/maps/maptest.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotgirl/src/main/resources/templates/maps/maptest.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/Hotgirl">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;juun-S&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Marckel9804/HotgirlChoione&quot;,
+    &quot;accountId&quot;: &quot;8f024b6a-2b22-4ad2-91df-8d53df57c2a8&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2gaSwH6NcPNVbwAn6deROO2MZYT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build Hotgirl.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.HotgirlApplication.executor": "Run",
+    "git-widget-placeholder": "Merging main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/NaverCloudCamp_DevOps_Web_10th/Utak_JEWON_HOTGIRL_project/HotgirlChoione",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="HotgirlApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Hotgirl.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="kr.bit.hotgirl.HotgirlApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-1.8.0_402-temurin-1.8.0_402-3183f394aec4-b51e62fd" />
+        <option value="jdk-17.0.10-temurin-17.0.10-3183f394aec4-87f3d08d" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a207620e-8e21-4003-9c27-42b6bf4dac97" name="Changes" comment="" />
+      <created>1715934431629</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715934431629</updated>
+      <workItem from="1715934432887" duration="1117000" />
+      <workItem from="1715944397105" duration="651000" />
+      <workItem from="1716201845212" duration="6297000" />
+      <workItem from="1716251151966" duration="8657000" />
+      <workItem from="1716338045420" duration="1158000" />
+      <workItem from="1716538435133" duration="10279000" />
+      <workItem from="1716616250851" duration="3645000" />
+      <workItem from="1716621172493" duration="6025000" />
+      <workItem from="1716628012090" duration="20883000" />
+      <workItem from="1716769468786" duration="781000" />
+      <workItem from="1716772905184" duration="1000000" />
+      <workItem from="1716796286504" duration="156000" />
+      <workItem from="1716798154569" duration="199000" />
+      <workItem from="1716798617807" duration="8570000" />
+      <workItem from="1716942484139" duration="2115000" />
+      <workItem from="1716986476328" duration="377000" />
+      <workItem from="1717028982200" duration="36000" />
+      <workItem from="1717029027942" duration="1364000" />
+    </task>
+    <task id="LOCAL-00001" summary="second commit">
+      <option name="closed" value="true" />
+      <created>1716541876742</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716541876742</updated>
+    </task>
+    <task id="LOCAL-00002" summary="#25 회원기능과 맵기능의 연결">
+      <option name="closed" value="true" />
+      <created>1716986597191</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716986597191</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="login_SYJ" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hi" />
+    <MESSAGE value="second commit" />
+    <MESSAGE value="#25 회원기능과 맵기능의 연결" />
+    <option name="LAST_COMMIT_MESSAGE" value="#25 회원기능과 맵기능의 연결" />
+  </component>
+</project>

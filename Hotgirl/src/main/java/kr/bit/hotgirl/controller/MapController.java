@@ -23,16 +23,13 @@ public class MapController {
 
     @GetMapping("/mypage")
     public String mypage(){
-        return "login/mypage";
+        return "/mypage";
     }
 
     @GetMapping("/jsimport")
     public String jsimport(){
         return "maps/jsimport";
     }
-    @GetMapping("/login")
-    public String login(){
-        return "login/login";
-    }
+
 
 }

@@ -84,10 +84,10 @@ function toggleMenu() {
 function showList(listName) {
     switch (listName) {
         case 'list1':
-            window.location.href = '../login/login';
+            window.location.href = '../User/login';
             break;
         case 'list2':
-            window.location.href = '../login/mypage';
+            window.location.href = '../User/mypage';
             break;
         default:
             alert('알 수 없는 항목입니다.');

@@ -21,6 +21,11 @@ public class SampleController {
     @Autowired
     private SampleService sampleService;
 
+    @RequestMapping(value = "/")
+    public String mapMain() {
+        return "maps/maptest";
+    }
+
     @RequestMapping(value = "/smain")
     public String smain() {
         return "sample/smain";
