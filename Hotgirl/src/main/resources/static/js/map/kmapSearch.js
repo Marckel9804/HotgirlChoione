@@ -46,6 +46,8 @@ function placesSearchCB(data, status, pagination) {
             // 마커에 클릭 이벤트를 등록합니다.
             (function(marker, data) {
                 kakao.maps.event.addListener(marker, 'click', function() {
+
+
                     var infowindowContent =
                         '<div class="inner_tooltip" style="text-align: center;">' +
                         '<div>' +
