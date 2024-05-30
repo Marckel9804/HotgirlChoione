@@ -1,151 +1,160 @@
-<!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html> <!-- HTML 문서형 선언 -->
+<html lang="ko" xmlns:th="<http://www.thymeleaf.org>">
 <head>
-    <meta charset="UTF-8">
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-    <title>회원가입</title>
+    <meta charset="UTF-8"> <!-- 문자 인코딩 선언 -->
+    <meta name="_csrf" th:content="${_csrf.token}"/> <!-- CSRF 토큰 선언 -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/> <!-- CSRF 헤더 이름 선언 -->
+    <title>회원가입</title> <!-- 웹페이지 타이틀 선언 -->
     <style>
         body {
             font-family: sans-serif;
+        /* 본문 폰트 설정 */
         }
-
         label {
             display: block;
+        /* 라벨 표시 방식 설정 */
             margin-bottom: 5px;
+        /* 라벨 하단 마진 설정 */
         }
-
         input[type="text"], input[type="password"], input[type="number"] {
             width: 100%;
+        /* 입력 필드 너비 설정 */
             padding: 8px;
+        /* 입력 필드 패딩 설정 */
             margin-bottom: 10px;
+        /* 입력 필드 하단 마진 설정 */
             box-sizing: border-box;
+        /* 박스 크기 계산 방식 설정 */
         }
-
         button {
             padding: 10px 20px;
+        /* 버튼 패딩 설정 */
             background-color: #4CAF50;
+        /* 버튼 배경색 설정 */
             color: white;
+        /* 버튼 색 설정 */
             border: none;
+        /* 버튼 테두리 없애기 설정 */
             cursor: pointer;
+        /* 버튼 커서 모양 설정 */
         }
     </style>
 </head>
 <body>
 <h2>회원가입</h2>
 
-<form th:action="@{/User/register}" method="post" th:object="${userDTO}">
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+<form th:action="@{/User/register}" method="post" th:object="${userDTO}"> <!-- 회원가입 양식 시작, 회원가입 요청 경로와 POST 메소드 설정, userDTO 객체 바인딩 -->
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> <!-- CSRF 토큰 값 설정 -->
     <div>
-        <label for="userName">이름:</label>
-        <input type="text" id="userName" th:field="*{userName}">
-        <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color: red;"></p>
+        <label for="userName">이름:</label> <!-- 이름 라벨 -->
+        <input type="text" id="userName" th:field="*{userName}"> <!-- 이름 입력 필드, userDTO의 userName 필드와 바인딩 -->
+        <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color: red;"></p> <!-- userName 필드에 에러가 있을 경우 에러 메시지 출력 -->
     </div>
     <div>
-        <label for="userId">아이디:</label>
-        <input type="text" id="userId" th:field="*{userId}">
-        <button type="button" id="idCheckBtn">중복확인</button>
-        <p id="idCheckResult" style="color: red;"></p>
-        <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" style="color: red;"></p>
+        <label for="userId">아이디:</label> <!-- 아이디 라벨 -->
+        <input type="text" id="userId" th:field="*{userId}"> <!-- 아이디 입력 필드, userDTO의 userId 필드와 바인딩 -->
+        <button type="button" id="idCheckBtn">중복확인</button> <!-- 중복확인 버튼 -->
+        <p id="idCheckResult" style="color: red;"></p> <!-- 아이디 중복확인 결과 출력 -->
+        <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" style="color: red;"></p> <!-- userId 필드에 에러가 있을 경우 에러 메시지 출력 -->
     </div>
     <div>
-        <label for="userPw">비밀번호:</label>
-        <input type="password" id="userPw" th:field="*{userPw}">
-        <p th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}" style="color: red;"></p>
+        <label for="userPw">비밀번호:</label> <!-- 비밀번호 라벨 -->
+        <input type="password" id="userPw" th:field="*{userPw}"> <!-- 비밀번호 입력 필드, userDTO의 userPw 필드와 바인딩 -->
+        <p th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}" style="color: red;"></p> <!-- userPw 필드에 에러가 있을 경우 에러 메시지 출력 -->
     </div>
     <div>
-        <label for="userPwConfirm">비밀번호 확인:</label>
-        <input type="password" id="userPwConfirm">
-        <p id="pwCheckResult" style="color: red;"></p>
+        <label for="userPwConfirm">비밀번호 확인:</label> <!-- 비밀번호 확인 라벨 -->
+        <input type="password" id="userPwConfirm"> <!-- 비밀번호 확인 입력 필드 -->
+        <p id="pwCheckResult" style="color: red;"></p> <!-- 비밀번호 확인 결과 출력 -->
     </div>
     <div>
-        <label for="userAge">나이:</label>
-        <input type="number" id="userAge" th:field="*{userAge}">
-        <p th:if="${#fields.hasErrors('userAge')}" th:errors="*{userAge}" style="color: red;"></p>
+        <label for="userAge">나이:</label> <!-- 나이 라벨 -->
+        <input type="number" id="userAge" th:field="*{userAge}"> <!-- 나이 입력 필드, userDTO의 userAge 필드와 바인딩 -->
+        <p th:if="${#fields.hasErrors('userAge')}" th:errors="*{userAge}" style="color: red;"></p> <!-- userAge 필드에 에러가 있을 경우 에러 메시지 출력 -->
     </div>
     <div>
-        <label for="userGender">성별:</label>
-        <select id="userGender" th:field="*{userGender}">
-            <option value="남">남</option>
-            <option value="여">여</option>
+        <label for="userGender">성별:</label> <!-- 성별 라벨 -->
+        <select id="userGender" th:field="*{userGender}"> <!-- 성별 선택 필드, userDTO의 userGender 필드와 바인딩 -->
+            <option value="남">남</option> <!-- 성별 남성 옵션 -->
+            <option value="여">여</option> <!-- 성별 여성 옵션 -->
         </select>
     </div>
     <div>
-        <label for="userAddr">주소:</label>
-        <input type="text" id="userAddr" th:field="*{userAddr}">
+        <label for="userAddr">주소:</label> <!-- 주소 라벨 -->
+        <input type="text" id="userAddr" th:field="*{userAddr}"> <!-- 주소 입력 필드, userDTO의 userAddr 필드와 바인딩 -->
     </div>
-    <button type="submit" id="registerBtn">가입하기</button>
+    <button type="submit" id="registerBtn">가입하기</button> <!-- 가입하기 버튼 -->
 </form>
 
-<script th:inline="javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        const idCheckBtn = document.getElementById('idCheckBtn');
-        const idCheckResult = document.getElementById('idCheckResult');
-        const pwInput = document.getElementById('userPw');
-        const pwConfirmInput = document.getElementById('userPwConfirm');
-        const pwCheckResult = document.getElementById('pwCheckResult');
-        const registerBtn = document.getElementById('registerBtn'); // 가입하기 버튼
+<script th:inline="javascript"> <!-- 자바스크립트 시작 -->
+document.addEventListener('DOMContentLoaded', function () { <!-- 문서가 로드되면 실행 -->
+    const idCheckBtn = document.getElementById('idCheckBtn'); <!-- 아이디 중복확인 버튼 -->
+    const idCheckResult = document.getElementById('idCheckResult'); <!-- 아이디 중복확인 결과 출력 -->
+    const pwInput = document.getElementById('userPw'); <!-- 비밀번호 입력 필드 -->
+    const pwConfirmInput = document.getElementById('userPwConfirm'); <!-- 비밀번호 확인 입력 필드 -->
+    const pwCheckResult = document.getElementById('pwCheckResult'); <!-- 비밀번호 확인 결과 출력 -->
+    const registerBtn = document.getElementById('registerBtn'); <!-- 가입하기 버튼 -->
 
-        let isIdValid = false; // 아이디 중복 확인 결과 저장
+    let isIdValid = false; <!-- 아이디 중복 확인 결과 저장 -->
 
-        idCheckBtn.addEventListener('click', () => {
-            const userId = document.getElementById('userId').value;
-            const csrfToken = document.querySelector('meta[name="_csrf"]').content;
-            const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
+    idCheckBtn.addEventListener('click', () => { <!-- 아이디 중복확인 버튼 클릭 이벤트 -->
+        const userId = document.getElementById('userId').value; <!-- 아이디 값 저장 -->
+        const csrfToken = document.querySelector('meta[name="_csrf"]').content; <!-- CSRF 토큰 값 저장 -->
+        const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content; <!-- CSRF 헤더 이름 저장 -->
 
-            if (!userId) {
-                idCheckResult.textContent = '아이디를 입력해주세요.';
-                isIdValid = false; // 아이디 유효성 초기화
-                updateRegisterBtnState(); // 버튼 상태 업데이트
-                return;
-            }
-
-            fetch('/User/check-duplication', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    [csrfHeader]: csrfToken,
-                },
-                body: JSON.stringify({userId}),
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.isDuplicate) {
-                        idCheckResult.textContent = '이미 사용 중인 아이디입니다.';
-                        isIdValid = false; // 아이디 유효하지 않음
-                    } else {
-                        idCheckResult.textContent = '사용 가능한 아이디입니다.';
-                        isIdValid = true; // 아이디 유효함
-                    }
-                    updateRegisterBtnState(); // 버튼 상태 업데이트
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    idCheckResult.textContent = '중복 확인 중 오류가 발생했습니다.';
-                    isIdValid = false; // 아이디 유효하지 않음
-                    updateRegisterBtnState(); // 버튼 상태 업데이트
-                });
-        });
-
-        pwConfirmInput.addEventListener('input', () => {
-            if (pwInput.value !== pwConfirmInput.value) {
-                pwCheckResult.textContent = '비밀번호가 일치하지 않습니다.';
-            } else {
-                pwCheckResult.textContent = '';
-            }
-            updateRegisterBtnState(); // 버튼 상태 업데이트
-        });
-
-        function updateRegisterBtnState() {
-            // 아이디 중복 확인 && 비밀번호 일치 확인
-            registerBtn.disabled = !isIdValid || (pwInput.value !== pwConfirmInput.value);
+        if (!userId) { <!-- 아이디가 없을 경우 -->
+            idCheckResult.textContent = '아이디를 입력해주세요.'; <!-- 아이디 입력 요청 메시지 출력 -->
+            isIdValid = false; <!-- 아이디 유효성 초기화 -->
+            updateRegisterBtnState(); <!-- 버튼 상태 업데이트 -->
+            return;
         }
+
+        fetch('/User/check-duplication', { <!-- 아이디 중복확인 요청 -->
+            method: 'POST', <!-- POST 메소드 사용 -->
+            headers: { <!-- 헤더 설정 -->
+                'Content-Type': 'application/json', <!-- 콘텐츠 타입 설정 -->
+                [csrfHeader]: csrfToken, <!-- CSRF 토큰 값 설정 -->
+            },
+            body: JSON.stringify({userId}), <!-- 아이디 값 전송 -->
+        })
+            .then(response => { <!-- 응답 받기 -->
+                if (!response.ok) { <!-- 응답이 오류일 경우 -->
+                    throw new Error('Network response was not ok.'); <!-- 에러 메시지 출력 -->
+                }
+                return response.json(); <!-- 응답을 JSON 형태로 반환 -->
+            })
+            .then(data => { <!-- 응답 데이터 처리 -->
+                if (data.isDuplicate) { <!-- 아이디가 중복일 경우 -->
+                    idCheckResult.textContent = '이미 사용 중인 아이디입니다.'; <!-- 중복 메시지 출력 -->
+                    isIdValid = false; <!-- 아이디 유효하지 않음 -->
+                } else {
+                    idCheckResult.textContent = '사용 가능한 아이디입니다.'; <!-- 사용 가능 메시지 출력 -->
+                    isIdValid = true; <!-- 아이디 유효함 -->
+                }
+                updateRegisterBtnState(); <!-- 버튼 상태 업데이트 -->
+            })
+            .catch(error => { <!-- 에러 처리 -->
+                console.error('Error:', error); <!-- 콘솔에 에러 메시지 출력 -->
+                idCheckResult.textContent = '중복 확인 중 오류가 발생했습니다.'; <!-- 오류 메시지 출력 -->
+                isIdValid = false; <!-- 아이디 유효하지 않음 -->
+                updateRegisterBtnState(); <!-- 버튼 상태 업데이트 -->
+            });
     });
+
+    pwConfirmInput.addEventListener('input', () => { <!-- 비밀번호 확인 입력 이벤트 -->
+        if (pwInput.value !== pwConfirmInput.value) { <!-- 비밀번호와 비밀번호 확인이 일치하지 않을 경우 -->
+            pwCheckResult.textContent = '비밀번호가 일치하지 않습니다.'; <!-- 불일치 메시지 출력 -->
+        } else {
+            pwCheckResult.textContent = ''; <!-- 일치할 경우 메시지 삭제 -->
+        }
+        updateRegisterBtnState(); <!-- 버튼 상태 업데이트 -->
+    });
+
+    function updateRegisterBtnState() { <!-- 버튼 상태 업데이트 함수 -->
+        // 아이디 중복 확인 && 비밀번호 일치 확인
+        registerBtn.disabled = !isIdValid || (pwInput.value !== pwConfirmInput.value); <!-- 아이디 중복 확인 결과와 비밀번호 일치 확인 결과에 따라 버튼 활성화/비활성화 -->
+    }
+});
 </script>
 </body>
 </html>

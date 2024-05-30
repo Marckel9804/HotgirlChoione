@@ -14,8 +14,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        log.error(exception.getMessage()); // 에러 메시지 기록
-        log.info("로그인 실패"); // 로그인 실패 정보 기록
+//        log.error(exception.getMessage()); // 에러 메시지 기록
+//        log.info("로그인 실패"); // 로그인 실패 정보 기록
         System.out.println("로그인 실패"); // 콘솔에 로그인 실패 출력
         response.sendRedirect(request.getContextPath() + "/login?error"); // 로그인 실패 시, 로그인 페이지로 리다이렉트
         System.out.println(request.getParameter("userId")); // 콘솔에 로그인 시도한 사용자 ID 출력
