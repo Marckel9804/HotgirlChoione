@@ -1,9 +1,17 @@
 var pss = new kakao.maps.services.Places(map);
 var markers = []; // 마커를 저장할 배열
 
+<<<<<<< HEAD
 // 마커 클릭시 해당 위치 상세정보 창
 var infoOverlay = new kakao.maps.CustomOverlay({removable: true, yAnchor: 1.5 });
 
+=======
+// 전역 인포윈도우 생성
+var infowindow = new kakao.maps.InfoWindow({
+    zIndex: 1,
+    removable: true
+});
+>>>>>>> 27b7d3a28892b30869b6d90967860e0230bd2eb2
 
 function searchByKeyword(keyword) {
     console.log("function searchByKeyword");
@@ -44,6 +52,21 @@ function placesSearchCB(data, status, pagination) {
             // 마커에 클릭 이벤트를 등록합니다.
             (function(marker, data) {
                 kakao.maps.event.addListener(marker, 'click', function() {
+<<<<<<< HEAD
+=======
+
+
+                    var infowindowContent =
+                        '<div class="inner_tooltip" style="text-align: center;">' +
+                        '<div>' +
+                         '<a href="' + data.place_url + '" target="_blank" class="link_btn link_tit_tooltip">' + data.place_name + '</a>' +
+                        '</div>' +
+                        '<div class="button-container" style="margin-top: 5px">' +
+                        '<button class="link_btn link_route" onclick="findRoute(' + data.y + ', ' + data.x + ')">리뷰</button> ' +
+                        '<button class="link_btn link_another_action" onclick="showBoardPanel(\'' + data.place_name + '\')">채팅</button>' + // 가게 이름 전달
+                        '</div>' +
+                        '</div>';
+>>>>>>> 27b7d3a28892b30869b6d90967860e0230bd2eb2
 
                     // 상세정보 창에 담길 html 내용
                     var infoOverlayContent =

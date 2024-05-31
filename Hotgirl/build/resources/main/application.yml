@@ -3,7 +3,11 @@ spring:
 #    static-path-pattern: /resources/**
 
   datasource:
+<<<<<<< HEAD
     url: jdbc:mysql://175.209.41.173:413/hotgirldb
+=======
+    url:  jdbc:mysql://175.209.41.173:413/hotgirldb
+>>>>>>> 27b7d3a28892b30869b6d90967860e0230bd2eb2
     username: hotgirl
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,7 +18,11 @@ spring:
     show-sql: true
     properties:
       hibernate:
+<<<<<<< HEAD
 
   devtools:
     restart:
       enabled: false
+=======
+        dialect: org.hibernate.dialect.MySQL8Dialect
+>>>>>>> 27b7d3a28892b30869b6d90967860e0230bd2eb2

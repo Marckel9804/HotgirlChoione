@@ -1,32 +1,47 @@
 package kr.bit.hotgirl.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotEmpty
-    private String address_front;
-    private String address_back;
+    @Column(nullable = false)
+    private String addressFront;
+
+    @Column(nullable = true)
+    private String addressBack;
 
     @NotEmpty
+    @Column(nullable = false, unique = true)
     private String name;
 
+
+    @Column(nullable = true)
     private String zipcode;
 
     @NotEmpty
+    @Column(nullable = false)
     private double latitude;
+
     @NotEmpty
+    @Column(nullable = false)
     private double longitude;
 
+    public Place() {}
+    public Place(@NotEmpty String addressFront, @NotEmpty String name, @NotEmpty double latitude, @NotEmpty double longitude) {
+        this.addressFront = addressFront;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }
+

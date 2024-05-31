@@ -45,6 +45,18 @@ function placesSearchCB(data, status, pagination) {
             (function(marker, data) {
                 kakao.maps.event.addListener(marker, 'click', function() {
 
+                    //이거 지워서 커밋해
+                    // var infowindowContent =
+                    //     '<div class="inner_tooltip" style="text-align: center;">' +
+                    //     '<div>' +
+                    //      '<a href="' + data.place_url + '" target="_blank" class="link_btn link_tit_tooltip">' + data.place_name + '</a>' +
+                    //     '</div>' +
+                    //     '<div class="button-container" style="margin-top: 5px">' +
+                    //     '<button class="link_btn link_route" onclick="findRoute(' + data.y + ', ' + data.x + ')">리뷰</button> ' +
+                    //     '<button class="link_btn link_another_action" onclick="showBoardPanel(\'' + data.place_name + '\')">채팅</button>' + // 가게 이름 전달
+                    //     '</div>' +
+                    //     '</div>';
+
                     // 상세정보 창에 담길 html 내용
                     var infoOverlayContent =
                         '<div class="info_container"> '+
