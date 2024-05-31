@@ -39,7 +39,10 @@
     <content url="file://$MODULE_DIR$/../../src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
+<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
+=======
+>>>>>>> 27b7d3a28892b30869b6d90967860e0230bd2eb2
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

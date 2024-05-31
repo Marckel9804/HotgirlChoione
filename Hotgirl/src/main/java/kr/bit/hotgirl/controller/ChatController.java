@@ -10,4 +10,9 @@ public class ChatController {
     public String chater(){
         return "chat/chater";
     }
+
+    @GetMapping("/maptest")
+    public String mapTest() {
+        return "chat/maptest";
+    }
 }
